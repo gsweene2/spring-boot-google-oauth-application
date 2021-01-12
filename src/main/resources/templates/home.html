@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="https://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+<div th:replace="fragments/head :: head"></div>
+<body>
+<div th:replace="fragments/bootstrap-navbar :: bootstrap-navbar"></div>
+<div class="container" style="padding-top: 5vh">
+    <h1>Welcome to the Google Oauth Login Application!</h1>
+    <p>Click <a th:href="@{/user}">here</a> to view your user details.</p>
+</div>
+</body>
+<div th:replace="fragments/bootstrap-js-cdn :: bootstrap-js-cdn"></div>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<div th:replace="fragments/head :: head"></div>
+<body>
+<div th:replace="fragments/bootstrap-navbar :: bootstrap-navbar"></div>
+<div class="container" style="padding-top: 5vh">
+    <div sec:authorize="isAuthenticated()">
+        This content is only shown to authenticated users.
+    </div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        This content is only shown to administrators.
+    </div>
+    <div sec:authorize="hasRole('ROLE_USER')">
+        This content is only shown to users.
+    </div>
+    <span>authentication.name: </span><span th:text="${#authentication.name}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    <span>authentication.principal.name: </span><span th:text="${#authentication.principal.name}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    <span>authentication.principal.email: </span><span th:text="${#authentication.principal.email}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    <span>authentication.principal.attributes.name: </span><span th:text="${#authentication.principal.attributes.name}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    <span>authentication.principal.attributes.given_name: </span><span th:text="${#authentication.principal.attributes.given_name}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    <span>authentication.principal.attributes.family_name: </span><span th:text="${#authentication.principal.attributes.family_name}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    <span>authentication.principal.authorities: </span><span th:text="${#authentication.principal.authorities}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    <span>authentication.principal.attributes.picture: </span><span th:text="${#authentication.principal.attributes.picture}">
+        The value of the "name" property of the authentication object should appear here.
+    </span></br>
+    </br>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+</body>
+<div th:replace="fragments/bootstrap-js-cdn :: bootstrap-js-cdn"></div>
+</html>
